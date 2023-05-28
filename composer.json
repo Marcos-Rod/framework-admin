@@ -1,0 +1,24 @@
+{
+    "name": "marcos/framework-eloquent",
+    "description": "Patron MVC con eloquent",
+    "type": "project",
+    "require": {
+        "phpmailer/phpmailer": "^6.8",
+        "illuminate/database": "^10.11"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "classmap": [
+            "app"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Marcos",
+            "email": "tmlwar01@gmail.com"
+        }
+    ]
+}

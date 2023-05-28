@@ -1,0 +1,72 @@
+:root{
+    --color-secondary: #b3b3b3;
+    --color-primary: #202020;
+    --font-primary: 'Rubik', sans-serif;
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+label.error, .error{
+    width: 100%;
+    color: #ff0000;
+    font-size: .9em;
+}
+a{
+    color: inherit;
+    text-decoration: none;
+}
+.form-control:focus{
+    box-shadow: none;
+}
+
+.header{
+    background: #000;
+}
+.login-form{
+    background: #fff;
+    box-shadow: 3px 0px 10px 10px #fff;
+    border-radius: 10px;
+    color: #000;
+    font-family: 'Roboto';
+}
+.navbar-light .navbar-nav .show > .nav-link,.navbar-light .navbar-nav .nav-link{
+    color: #fff;
+}
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link:hover{
+    color: #D20065;
+}
+.img-destacada{
+    position: relative;
+    max-width: 400px;
+    height: 230px;
+    width: 100%;
+    overflow: hidden;
+}
+.img-destacada img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    left: 0;
+    top: 0;
+}
+.btn-form{
+    background: var(--color-primary);
+}
+.btn-form:hover{
+    background: var(--color-secondary);
+}
+
+.btn-google{
+    padding: 0;
+    padding-right: 15px;
+    border-radius: 0;
+    font-size: 14px;
+    box-shadow: 2px 2px 3px 0px #00000057;
+    font-family: 'Roboto', sans-serif;
+
+}
+.btn-google:hover{
+    background: #4285F4;
+    color: #fff;
+}
