@@ -25,13 +25,14 @@ class MailController{
         $this->mail->Password = SMTP_PASSWORD;              // Contraseña SMTP
         $this->mail->SMTPSecure = SMTP_SECURE;
         $this->mail->Port  = $this->smtp_port;
-        $this->mail->setFrom($datos['mail'], mb_convert_encoding($datos['name'], 'UTF-8'));
+        $this->mail->setFrom($datos['email'], mb_convert_encoding($datos['name'], 'UTF-8'));
         $this->mail->addAddress($this->destinatario, 'Destinatario');
 
         $this->mail->isHTML(true);
         $this->mail->Subject = mb_convert_encoding($datos['subject'], 'UTF-8');
         $this->mail->Body  = $this->body;
-        $this->mail->AltBody = 'Los datos que dejó fueron los siguientes. Nombre: ' . $datos['name'] . ', Correo: ' . $datos['mail'];
+        $this->mail->AltBody = 'Los datos que dejó fueron los siguientes. Nombre: ' . $datos['name'] . ', Correo: ' . $datos['email'];
+        $this->mail->CharSet = 'utf8';
 
         if (!$this->mail->send())
             return false;

@@ -12,6 +12,7 @@ class Functions
         return date($format, time());
     }
 
+    //Formato de fecha completo
     public static function fechaFormateada($fecha = "")
     {
         if ($fecha == "")
@@ -25,6 +26,16 @@ class Functions
         $arr_meses = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
 
         return $arr_dias[$arr_fecha[2]] . " " . $arr_fecha[2] . " de " . $arr_meses[$arr_fecha[1] - 1] . " del " . $arr_fecha[0];
+    }
+
+    //Formato de fecha personalizado
+    public static function formatoFecha($fecha, $formato = "Y-m-d")
+    {
+
+        $fecha = new \DateTime($fecha);
+        $formatoFecha = $fecha->format($formato);
+
+        return $formatoFecha;
     }
 
     public static function encrypt($string, $key)
@@ -71,4 +82,54 @@ class Functions
         }
         return $txt;
     }
+
+    //Validación de reCaptcha v3
+    public static function validateCaptcha($secretKey, $token){
+
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $response = file_get_contents("$url?secret=$secretKey&response=$token");
+        $response = json_decode($response, true);
+
+        if($response['success'] && $response['score'] >= 0.7){
+            return true;
+        } else {
+            return false;
+        }
+        
+        return false;
+    }
+
+    //Subir archivo a un directiorio
+    public static function uploadFile($file = array(), $dir = "/userfiles/images/")
+    {
+        $aleatorio = md5(uniqid(rand(), true));
+        $strUnica = substr($aleatorio, 0, 5);
+        $name_file = $strUnica . '-' . $file['name'];
+
+        $temp = $file['tmp_name'];
+
+        if (!is_dir($dir))
+            mkdir($dir, 0777, true);
+        
+        //Subir archivo al servidor
+        if (!move_uploaded_file($temp, $dir . $name_file))
+            return false;
+
+        return $name_file;
+    }
+
+    //Eliminar directorio o archivo
+    public static function deleteFile($dir){
+
+        echo $dir;
+        
+        if(!is_writable($dir)){
+            return false;
+        }
+
+        unlink($dir);
+
+        return true;
+    }
+    
 }

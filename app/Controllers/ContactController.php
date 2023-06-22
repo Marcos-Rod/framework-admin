@@ -20,12 +20,8 @@ class ContactController extends Controller
 
     public function store(){
         $data = $_POST;
-        $data['create_at'] = Functions::hoy();
-        $data['update_at'] = Functions::hoy();
 
-        $model = new Contact;
-
-        $model->create($data);
+        Contact::create($data);
 
         try {
             $this->send($data);
@@ -55,7 +51,7 @@ class ContactController extends Controller
                         <h4 style="text-align:center;">Los datos que dejó fuerón los siguientes</h4>
                         <ul>
                             <li>Nombre: ' . $data['name'] . '</li>
-                            <li>Correo: ' . $data['mail'] . '</li>
+                            <li>Correo: ' . $data['email'] . '</li>
                             <li>WhatsApp: ' . $data['phone'] . '</li>
                             <li>Mensaje: ' . $data['comments'] . '</li>
                         </ul>

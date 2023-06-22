@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $this->project ?></title>
 
-    <meta name="author" content="Digital Gin" />
+    <meta name="author" content="Marcos Rodriguez" />
     <meta name="title" content="<?= $this->project ?>">
     <meta name="DC.Title" content="<?= $this->project ?>">
     <meta http-equiv="title" content="<?= $this->project ?>">
