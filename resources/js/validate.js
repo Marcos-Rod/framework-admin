@@ -24,8 +24,8 @@ $().ready(function () {
                 minlength: "Escribe tu nombre completo",
             },
             phone: {
-                required: "El telÃ©fono es requerido",
-                phoneUS: "Escriba un nÃºmero de telÃ©fono vÃ¡lido"
+                required: "El teléfono es requerido",
+                phoneUS: "Escriba un número de teléfono válido"
             },
             email: {
                 required: "Escriba su correo",

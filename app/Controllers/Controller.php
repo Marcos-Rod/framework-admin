@@ -2,20 +2,27 @@
 
 namespace App\Controllers;
 
-use App\Models\Configuration;
-
 class Controller
 {
 
     public $configuration = array(), $project = "", $url = "", $keywords = "", $description = "";
+    public $metas = array();
 
     public function __construct()
     {
-        $this->configuration = Configuration::first();
+        $this->configuration = \App\Models\Configuration::first();
         $this->project = $this->configuration->project ?? null;
         $this->url = $this->configuration->url ?? null;
-        $this->keywords = $this->configuration->keywords ?? null;
-        $this->description = $this->configuration->description ?? null;
+
+        $this->metas = [
+            'keywords' => $this->configuration->keywords ?? null,
+            'description' => $this->configuration->description ?? null,
+            'file' => 'inicio',
+            'canonical_url' => '',
+            'title' => $this->project,
+            'image' => 'your image default',
+            'slug' => 'inicio'
+        ];
     }
 
     public function view($route, $data = [])
@@ -33,7 +40,8 @@ class Controller
 
             return $content;
         } else {
-            return "El archivo no existe";
+            include  URL_SERVIDOR . "404.php";
+            return;
         }
     }
 

@@ -1,7 +1,6 @@
 <?php
 
 use App\Controllers\Admin\AdminController;
-use App\Controllers\Admin\PostController;
 use App\Controllers\AuthController;
 use App\Route;
 
@@ -11,20 +10,7 @@ use App\Route;
 Route::get('admin', [AdminController::class, 'index']);
 
 if (AuthController::isLoggedIn()) {
-    /* Rutas para blog */
-    Route::get(FOLDER_ADMIN . 'post', [PostController::class, 'index']);
-    Route::get(FOLDER_ADMIN . 'post/create', [PostController::class, 'create']);
-    Route::get(FOLDER_ADMIN . 'post/:slug/edit', [PostController::class, 'edit']);
-    Route::post(FOLDER_ADMIN . 'post/store', [PostController::class, 'store']);
-    Route::post(FOLDER_ADMIN . 'post/:slug/update', [PostController::class, 'update']);
-    Route::get(FOLDER_ADMIN . 'post/:slug/delete', [PostController::class, 'delete']);
-
-    //Rutas para Categories
-    Route::get(FOLDER_ADMIN . 'category', [CategoryController::class, 'index']);
-    Route::get(FOLDER_ADMIN . 'category/:slug/edit', [CategoryController::class, 'edit']);
-    Route::get(FOLDER_ADMIN . 'category/:slug/delete', [CategoryController::class, 'destroy']);
-    Route::post(FOLDER_ADMIN . 'category/store', [CategoryController::class, 'store']);
-    Route::post(FOLDER_ADMIN . 'category/update', [CategoryController::class, 'update']);
+    /* Rutas protegidas con autenticación */
 }
 
 Route::get(FOLDER_ADMIN . ':slug', [AdminController::class, 'index']);

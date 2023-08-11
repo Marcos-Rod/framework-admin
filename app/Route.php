@@ -59,6 +59,6 @@ class Route
             }
         }
 
-        echo "404 not found";
+        include  URL_SERVIDOR . "404.php";
     }
 }

@@ -6,12 +6,12 @@ class HomeController extends Controller
 {
     public function index($slug = "inicio")
     {
-        $metas = [
-            'slug' => $slug,
-            'file' => $slug,
-        ];
+        $this->metas['title'] = (($slug != "inicio") ? ucfirst($slug) . ' - ' : '') . $this->project;
+        $this->metas['file'] = $slug;
+        $this->metas['slug'] = $slug;
+        $this->metas['canonical_url'] = $slug;
 
-        return $this->view('assets.template', compact('metas'));
+        return $this->view('assets.template');
     }
 
 }
