@@ -4,7 +4,7 @@
 Run
 
 ```sh
-git clone https://github.com/phpdevsolutions/framework-eloquent.git
+git clone https://github.com/phpdevsolutions/framework-v2.git
 ```
 
 Install dependencies
