@@ -2,8 +2,11 @@
 
 namespace App\Controllers;
 
+use App\Controllers\Traits\MessageTrait;
+
 class Controller
 {
+    use MessageTrait;
 
     public $configuration = array(), $project = "", $url = "", $keywords = "", $description = "";
     public $metas = array();
@@ -68,5 +71,21 @@ class Controller
     {
         date_default_timezone_set('America/Mexico_City');
         return date('Y-m-d H:i:s', time());
+    }
+
+    // Función para generar y almacenar el token CSRF en el formulario
+    public function generateCsrfToken()
+    {
+        if (session_status() !== PHP_SESSION_ACTIVE) {
+            session_start();
+        }
+
+        $csrfToken = bin2hex(random_bytes(32)); // Generar un token CSRF aleatorio
+
+        // Almacenar el token en la sesión
+        $_SESSION['csrf_token'] = $csrfToken;
+
+        // Agregar el token al formulario como un campo oculto
+        echo '<input type="hidden" name="csrf_token" value="' . $csrfToken . '">';
     }
 }
